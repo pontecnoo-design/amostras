@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Pizzaria Forno 9 | Pedido rápido no WhatsApp</title>
+<style>
+  :root{
+    --bg:#07060a; --card:rgba(255,255,255,.06); --stroke:rgba(255,255,255,.12);
+    --text:#fff4ef; --muted:rgba(255,244,239,.72);
+    --red:#ff3d57; --gold:#ffd36e; --mint:#00ff9a; --r:18px;
+    --shadow:0 18px 60px rgba(0,0,0,.55);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+    color:var(--text);
+    background:
+      radial-gradient(900px 500px at 10% 10%, rgba(255,61,87,.18), transparent 60%),
+      radial-gradient(900px 500px at 85% 25%, rgba(255,211,110,.12), transparent 60%),
+      linear-gradient(180deg,#06050a,#07060a 55%,#06050a);
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 18px}
+  .nav{position:sticky;top:0;z-index:40;background:rgba(7,6,10,.55);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08)}
+  .nav .in{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 0}
+  .brand{display:flex;gap:12px;align-items:center}
+  .logo{width:40px;height:40px;border-radius:14px;background:linear-gradient(135deg,var(--red),var(--gold));border:1px solid rgba(255,255,255,.18);box-shadow:0 18px 60px rgba(255,61,87,.18)}
+  .btn{display:inline-flex;gap:10px;align-items:center;justify-content:center;padding:12px 16px;border-radius:999px;font-weight:900;font-size:13px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.06);transition:.18s}
+  .btn:hover{transform:translateY(-1px);background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.25)}
+  .btn.primary{border:0;background:linear-gradient(135deg,var(--red),var(--gold));color:#21040a;box-shadow:0 18px 60px rgba(255,61,87,.18)}
+  .btn.green{border:0;background:linear-gradient(135deg,var(--mint),var(--gold));color:#08110c}
+  .hero{padding:72px 0 28px}
+  .cols{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;align-items:stretch}
+  @media(max-width:900px){.cols{grid-template-columns:1fr}}
+  .h1{font-size:44px;line-height:1.05;letter-spacing:-1px}
+  @media(max-width:520px){.h1{font-size:34px}}
+  .p{margin-top:14px;color:var(--muted);line-height:1.65;max-width:60ch}
+  .card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:22px;padding:18px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .card:before{content:"";position:absolute;inset:-60%;background:radial-gradient(circle at 30% 30%, rgba(255,61,87,.16), transparent 45%),radial-gradient(circle at 70% 40%, rgba(255,211,110,.12), transparent 45%);transform:rotate(12deg);opacity:.75;pointer-events:none}
+  .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+  .pill{display:inline-flex;gap:8px;align-items:center;padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(0,0,0,.25);color:rgba(255,244,239,.82);font-size:12px}
+  .pill i{width:8px;height:8px;border-radius:999px;background:linear-gradient(135deg,var(--red),var(--gold))}
+  .section{padding:46px 0}
+  .title{font-size:24px;letter-spacing:-.5px}
+  .muted{color:var(--muted);line-height:1.65;margin-top:10px}
+  .menu{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+  @media(max-width:900px){.menu{grid-template-columns:1fr}}
+  .item h3{font-size:15px}
+  .item p{margin-top:8px;color:rgba(255,244,239,.72);line-height:1.6;font-size:13px}
+  .price{margin-top:10px;font-weight:900}
+  .float{position:fixed;right:16px;bottom:16px;z-index:80}
+  .reveal{opacity:0;transform:translateY(12px);transition:.7s ease}
+  .reveal.show{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap">
+    <div class="in">
+      <div class="brand">
+        <div class="logo"></div>
+        <div>
+          <b>Pizzaria <span style="color:var(--gold)">Forno 9</span></b>
+          <div style="font-size:12px;color:rgba(255,244,239,.62);margin-top:2px">Artesanal • Forno • Pedido rápido</div>
+        </div>
+      </div>
+      <a class="btn primary" id="wppTop" href="#">Pedir no WhatsApp</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div class="cols">
+        <div class="reveal">
+          <span class="pill"><i></i> Entrega rápida • Promo do dia • Pagamento fácil</span>
+          <h1 class="h1" style="margin-top:14px">Pizza que chega <span style="color:var(--gold)">quente</span> e some <span style="color:var(--gold)">rápido</span>.</h1>
+          <p class="p">Escolha o sabor, clique e peça. O WhatsApp abre com a mensagem pronta. Menos conversa, mais fome resolvida.</p>
+          <div class="row">
+            <a class="btn green wpp" data-prod="Quero o Cardápio Completo" href="#">Ver cardápio no WhatsApp</a>
+            <a class="btn" href="#cardapio">Ver sabores</a>
+          </div>
+        </div>
+
+        <aside class="card reveal">
+          <div style="position:relative;z-index:1">
+            <div class="title">Combo do Dia 🔥</div>
+            <p class="muted">2 pizzas grandes + refri 2L (tempo limitado).</p>
+            <div class="row">
+              <span class="pill"><i></i> 🍕 Grande</span>
+              <span class="pill"><i></i> 🥤 2L</span>
+              <span class="pill"><i></i> ⏱️ Hoje</span>
+            </div>
+            <div class="row" style="margin-top:16px">
+              <a class="btn primary wpp" data-prod="Quero o Combo do Dia (2 pizzas + refri)" href="#">Pedir combo</a>
+              <a class="btn" href="#cardapio">Ver mais</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="cardapio">
+    <div class="wrap">
+      <div class="card reveal">
+        <div class="title">Mais pedidas</div>
+        <p class="muted">Clique para pedir — a mensagem já vai com o sabor.</p>
+
+        <div class="menu">
+          <div class="card item reveal">
+            <h3>🍕 Calabresa Supreme</h3>
+            <p>Calabresa, cebola roxa, azeitona e queijo extra.</p>
+            <div class="price">R$ 49,90</div>
+            <div class="row"><a class="btn primary wpp" data-prod="Pizza Calabresa Supreme" href="#">Pedir</a></div>
+          </div>
+
+          <div class="card item reveal">
+            <h3>🧀 Quatro Queijos</h3>
+            <p>Mussarela, gorgonzola, parmesão e catupiry.</p>
+            <div class="price">R$ 52,90</div>
+            <div class="row"><a class="btn primary wpp" data-prod="Pizza Quatro Queijos" href="#">Pedir</a></div>
+          </div>
+
+          <div class="card item reveal">
+            <h3>🍫 Doce Chocolate & Morango</h3>
+            <p>Chocolate cremoso, morangos e açúcar de confeiteiro.</p>
+            <div class="price">R$ 39,90</div>
+            <div class="row"><a class="btn primary wpp" data-prod="Pizza Doce Chocolate & Morango" href="#">Pedir</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="card reveal" style="display:grid;grid-template-columns:1.2fr .8fr;gap:14px;align-items:center">
+        <div style="position:relative;z-index:1">
+          <div class="title">Quer cupom?</div>
+          <p class="muted">Chama no WhatsApp e pede o cupom de primeira compra.</p>
+          <div class="row">
+            <span class="pill"><i></i> 📍 Bairro Exemplo • MA</span>
+            <span class="pill"><i></i> ⏰ 18h–00h</span>
+          </div>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end;position:relative;z-index:1">
+          <a class="btn green wpp" data-prod="Quero cupom de primeira compra" href="#">Pedir cupom</a>
+          <a class="btn primary wpp" data-prod="Fazer pedido agora" href="#">Pedir agora</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="float">
+  <a class="btn green wpp" data-prod="Pedido rápido (Forno 9)" href="#">💬 WhatsApp</a>
+</div>
+
+<script>
+  const WPP="5598985699508";
+  function link(prod){
+    const msg=`Oi! Vim pela página da Pizzaria Forno 9 e quero pedir: ${prod}. Pode me dizer tempo e taxa de entrega?`;
+    return `https://wa.me/${WPP}?text=${encodeURIComponent(msg)}`;
+  }
+  document.querySelectorAll(".wpp").forEach(a=>{
+    const prod=a.dataset.prod||"Cardápio";
+    a.href=link(prod); a.target="_blank"; a.rel="noopener";
+  });
+  document.getElementById("wppTop").href=link("Fazer pedido (Topo)");
+  document.getElementById("wppTop").target="_blank"; document.getElementById("wppTop").rel="noopener";
+
+  const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add("show")),{threshold:.12});
+  document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
