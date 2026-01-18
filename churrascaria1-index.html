@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Churrascaria Sabor do Brasil</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #8B4513; /* Marrom escuro para churrasco */
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        nav {
+            background-color: #A0522D; /* Marrom médio */
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        section {
+            padding: 40px 20px;
+            text-align: center;
+        }
+        #home {
+            background-image: url('https://example.com/imagem-churrasco.jpg'); /* Substitua por uma imagem real de churrasco */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+        #home h2 {
+            font-size: 3em;
+        }
+        #menu {
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .menu-item {
+            margin: 20px;
+            display: inline-block;
+            width: 300px;
+            vertical-align: top;
+        }
+        .menu-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        #sobre {
+            background-color: #f9f9f9;
+        }
+        #contato {
+            background-color: #8B4513;
+            color: white;
+        }
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #A0522D;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #8B4513;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Churrascaria Sabor do Brasil</h1>
+        <p>A melhor experiência em carnes nobres e rodízio autêntico!</p>
+    </header>
+
+    <nav>
+        <a href="#home">Início</a>
+        <a href="#menu">Cardápio</a>
+        <a href="#sobre">Sobre Nós</a>
+        <a href="#contato">Contato</a>
+    </nav>
+
+    <section id="home">
+        <h2>Bem-vindo à Churrascaria Sabor do Brasil</h2>
+        <p>Venha saborear as melhores carnes grelhadas, saladas frescas e acompanhamentos irresistíveis. Ambiente acolhedor e serviço impecável para atrair famílias, amigos e grupos corporativos.</p>
+        <button onclick="window.location.href='#contato'">Reserve Agora</button>
+    </section>
+
+    <section id="menu">
+        <h2>Nosso Cardápio</h2>
+        <p>Uma variedade de cortes premium em rodízio ilimitado.</p>
+        <div class="menu-item">
+            <img src="https://example.com/picanha.jpg" alt="Picanha">
+            <h3>Picanha</h3>
+            <p>A rainha das carnes, suculenta e macia.</p>
+            <p>R$ 89,90 por pessoa</p>
+        </div>
+        <div class="menu-item">
+            <img src="https://example.com/costela.jpg" alt="Costela">
+            <h3>Costela</h3>
+            <p>Assada lentamente para derreter na boca.</p>
+            <p>Incluso no rodízio</p>
+        </div>
+        <div class="menu-item">
+            <img src="https://example.com/saladas.jpg" alt="Saladas">
+            <h3>Buffet de Saladas</h3>
+            <p>Opções frescas e variadas para complementar.</p>
+            <p>Incluso no rodízio</p>
+        </div>
+    </section>
+
+    <section id="sobre">
+        <h2>Sobre Nós</h2>
+        <p>Somos uma churrascaria profissional localizada no coração do Rio de Janeiro, com mais de 10 anos de tradição. Nosso objetivo é proporcionar uma experiência gastronômica inesquecível, com carnes de alta qualidade e um ambiente elegante que atrai turistas e locais. Venha nos visitar e sinta o verdadeiro sabor do Brasil!</p>
+    </section>
+
+    <section id="contato">
+        <h2>Entre em Contato</h2>
+        <p>Envie uma mensagem ou reserve sua mesa.</p>
+        <form>
+            <input type="text" placeholder="Seu Nome" required>
+            <input type="email" placeholder="Seu Email" required>
+            <textarea placeholder="Sua Mensagem" required></textarea>
+            <button type="submit">Enviar</button>
+        </form>
+        <p>Endereço: Rua Exemplo, 123 - Rio de Janeiro, RJ<br>Telefone: (21) 1234-5678<br>Email: contato@sabordobrasil.com.br</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Churrascaria Sabor do Brasil. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>
