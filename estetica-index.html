@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Clínica Lumi | Estética & Beleza</title>
+<style>
+  :root{
+    --bg:#070912; --text:#f7f5ff; --muted:rgba(247,245,255,.72);
+    --card:rgba(255,255,255,.06); --stroke:rgba(255,255,255,.12);
+    --rose:#ff6fd8; --cyan:#00e1ff; --mint:#00ff9a; --r:18px;
+    --shadow:0 18px 60px rgba(0,0,0,.5);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+    color:var(--text);
+    background:
+      radial-gradient(900px 520px at 15% 10%, rgba(255,111,216,.16), transparent 60%),
+      radial-gradient(900px 520px at 85% 20%, rgba(0,225,255,.14), transparent 60%),
+      linear-gradient(180deg,#060814,#070912 55%,#060814);
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 18px}
+  .nav{position:sticky;top:0;z-index:40;background:rgba(7,9,18,.55);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08)}
+  .nav .in{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 0}
+  .brand{display:flex;gap:12px;align-items:center}
+  .logo{width:40px;height:40px;border-radius:14px;background:linear-gradient(135deg,var(--rose),var(--cyan));border:1px solid rgba(255,255,255,.18);box-shadow:0 18px 60px rgba(255,111,216,.16)}
+  .btn{display:inline-flex;gap:10px;align-items:center;justify-content:center;padding:12px 16px;border-radius:999px;font-weight:900;font-size:13px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.06);transition:.18s}
+  .btn:hover{transform:translateY(-1px);background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.25)}
+  .btn.primary{border:0;background:linear-gradient(135deg,var(--rose),var(--cyan));color:#0b0510;box-shadow:0 18px 60px rgba(0,225,255,.12)}
+  .btn.green{border:0;background:linear-gradient(135deg,var(--mint),var(--cyan));color:#06110c}
+  .hero{padding:72px 0 28px}
+  .cols{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;align-items:stretch}
+  @media(max-width:900px){.cols{grid-template-columns:1fr}}
+  .h1{font-size:44px;line-height:1.05;letter-spacing:-1px}
+  @media(max-width:520px){.h1{font-size:34px}}
+  .p{margin-top:14px;color:var(--muted);line-height:1.65;max-width:60ch}
+  .card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:22px;padding:18px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .card:before{content:"";position:absolute;inset:-60%;background:radial-gradient(circle at 30% 30%, rgba(255,111,216,.14), transparent 45%),radial-gradient(circle at 70% 40%, rgba(0,225,255,.12), transparent 45%);transform:rotate(12deg);opacity:.75;pointer-events:none}
+  .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+  .pill{display:inline-flex;gap:8px;align-items:center;padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(0,0,0,.22);color:rgba(247,245,255,.82);font-size:12px}
+  .pill i{width:8px;height:8px;border-radius:999px;background:linear-gradient(135deg,var(--rose),var(--cyan))}
+  .section{padding:46px 0}
+  .title{font-size:24px;letter-spacing:-.5px}
+  .muted{color:var(--muted);line-height:1.65;margin-top:10px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+  @media(max-width:900px){.grid3{grid-template-columns:1fr}}
+  .box h3{font-size:15px}
+  .box p{margin-top:8px;color:rgba(247,245,255,.72);line-height:1.6;font-size:13px}
+  .float{position:fixed;right:16px;bottom:16px;z-index:80}
+  .reveal{opacity:0;transform:translateY(12px);transition:.7s ease}
+  .reveal.show{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap">
+    <div class="in">
+      <div class="brand">
+        <div class="logo"></div>
+        <div>
+          <b>Clínica <span style="background:linear-gradient(135deg,#fff,var(--rose),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent">Lumi</span></b>
+          <div style="font-size:12px;color:rgba(247,245,255,.62);margin-top:2px">Estética • Cuidados • Autoestima</div>
+        </div>
+      </div>
+      <a class="btn primary" id="wppTop" href="#">Agendar no WhatsApp</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div class="cols">
+        <div class="reveal">
+          <span class="pill"><i></i> Atendimento humanizado • Resultados reais • Agenda rápida</span>
+          <h1 class="h1" style="margin-top:14px">Beleza com <span style="color:var(--cyan)">técnica</span>. Resultado com <span style="color:var(--rose)">cuidado</span>.</h1>
+          <p class="p">Procedimentos modernos, ambiente premium e atendimento que respeita você. Chame e agende em minutos.</p>
+          <div class="row">
+            <a class="btn green wpp" data-prod="Quero agendar uma avaliação" href="#">Agendar avaliação</a>
+            <a class="btn" href="#servicos">Ver serviços</a>
+          </div>
+        </div>
+
+        <aside class="card reveal">
+          <div style="position:relative;z-index:1">
+            <div class="title">Avaliação + Plano 💎</div>
+            <p class="muted">Você sai com um plano personalizado (sem adivinhação).</p>
+            <div class="row">
+              <span class="pill"><i></i> 📋 Plano</span>
+              <span class="pill"><i></i> 🧴 Cuidados</span>
+              <span class="pill"><i></i> ✅ Direto</span>
+            </div>
+            <div class="row" style="margin-top:16px">
+              <a class="btn primary wpp" data-prod="Quero avaliação + plano personalizado" href="#">Quero</a>
+              <a class="btn" href="#local">Local</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="servicos">
+    <div class="wrap">
+      <div class="card reveal">
+        <div class="title">Serviços</div>
+        <p class="muted">Clique e chame — a mensagem vai com o serviço escolhido.</p>
+
+        <div class="grid3">
+          <div class="card box reveal">
+            <h3>✨ Limpeza de Pele Premium</h3>
+            <p>Higienização, extração suave e máscara calmante.</p>
+            <div class="row"><a class="btn primary wpp" data-prod="Limpeza de Pele Premium" href="#">Agendar</a></div>
+          </div>
+          <div class="card box reveal">
+            <h3>💉 Botox (consultivo)</h3>
+            <p>Avaliação e aplicação conforme necessidade.</p>
+            <div class="row"><a class="btn primary wpp" data-prod="Avaliação para Botox" href="#">Agendar</a></div>
+          </div>
+          <div class="card box reveal">
+            <h3>🌿 Drenagem & Relax</h3>
+            <p>Massagem + drenagem para bem-estar.</p>
+            <div class="row"><a class="btn primary wpp" data-prod="Drenagem/Relax" href="#">Agendar</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="local">
+    <div class="wrap">
+      <div class="card reveal" style="display:grid;grid-template-columns:1.2fr .8fr;gap:14px;align-items:center">
+        <div style="position:relative;z-index:1">
+          <div class="title">Vamos cuidar de você</div>
+          <p class="muted">Me chama e já me diga: qual serviço + melhor horário.</p>
+          <div class="row">
+            <span class="pill"><i></i> 📍 Rua Exemplo, 88 • MA</span>
+            <span class="pill"><i></i> ⏰ Seg–Sáb 9h–19h</span>
+          </div>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end;position:relative;z-index:1">
+          <a class="btn green wpp" data-prod="Agendar para hoje" href="#">Agendar hoje</a>
+          <a class="btn primary wpp" data-prod="Agendar para esta semana" href="#">Agendar semana</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="float">
+  <a class="btn green wpp" data-prod="Agendamento rápido (Clínica Lumi)" href="#">💬 WhatsApp</a>
+</div>
+
+<script>
+  const WPP="5598985699508";
+  function link(prod){
+    const msg=`Oi! Vim pela página da Clínica Lumi e quero: ${prod}. Pode me passar valores e horários disponíveis?`;
+    return `https://wa.me/${WPP}?text=${encodeURIComponent(msg)}`;
+  }
+  document.querySelectorAll(".wpp").forEach(a=>{
+    const prod=a.dataset.prod||"Atendimento";
+    a.href=link(prod); a.target="_blank"; a.rel="noopener";
+  });
+  document.getElementById("wppTop").href=link("Agendamento (Topo)");
+  document.getElementById("wppTop").target="_blank"; document.getElementById("wppTop").rel="noopener";
+
+  const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add("show")),{threshold:.12});
+  document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
