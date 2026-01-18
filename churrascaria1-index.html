@@ -3,171 +3,321 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Churrascaria Sabor do Brasil</title>
+    <title>Churrascaria Sabor do Fogo - Rodízio Premium</title>
     <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #2c1e0f; /* Fundo escuro madeira */
+            color: #f5f5f5;
+            line-height: 1.6;
         }
         header {
-            background-color: #8B4513; /* Marrom escuro para churrasco */
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2.5em;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+            padding: 15px 0;
         }
         nav {
-            background-color: #A0522D; /* Marrom médio */
-            padding: 10px;
-            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #d4a373; /* Dourado/bege */
         }
         nav a {
-            color: white;
+            color: #fff;
             text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
+            margin-left: 25px;
+            font-weight: 600;
+            transition: color 0.3s;
         }
-        nav a:hover {
-            text-decoration: underline;
-        }
-        section {
-            padding: 40px 20px;
+        nav a:hover { color: #d4a373; }
+
+        /* Hero Section - grande imagem de fundo */
+        #hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)),
+                        url('https://images.unsplash.com/photo-1606857521015-7f9fcf423740?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
+            padding: 0 20px;
         }
-        #home {
-            background-image: url('https://example.com/imagem-churrasco.jpg'); /* Substitua por uma imagem real de churrasco */
-            background-size: cover;
-            background-position: center;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        #hero h1 {
+            font-size: 4.5em;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 10px #000;
         }
-        #home h2 {
+        #hero p {
+            font-size: 1.6em;
+            margin-bottom: 30px;
+        }
+        .btn {
+            background: #d4a373;
+            color: #2c1e0f;
+            padding: 15px 40px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 50px;
+            font-size: 1.2em;
+            transition: all 0.3s;
+        }
+        .btn:hover {
+            background: #b5895b;
+            transform: scale(1.05);
+        }
+
+        section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h2 {
+            text-align: center;
             font-size: 3em;
+            margin-bottom: 50px;
+            color: #d4a373;
         }
-        #menu {
-            background-color: white;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+
+        /* Destaques / Pratos em destaque */
+        #destaques {
+            background: url('https://images.unsplash.com/photo-1555939594-58056f625634?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            background-attachment: fixed;
+            position: relative;
         }
-        .menu-item {
-            margin: 20px;
-            display: inline-block;
-            width: 300px;
-            vertical-align: top;
+        #destaques::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(44, 30, 15, 0.75);
         }
-        .menu-item img {
+        .destaques-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            position: relative;
+            z-index: 2;
+        }
+        .prato {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .prato:hover { transform: translateY(-15px); }
+        .prato img {
             width: 100%;
-            height: 200px;
+            height: 250px;
+            object-fit: cover;
+        }
+        .prato h3 {
+            padding: 20px 10px 10px;
+            font-size: 1.6em;
+        }
+        .prato p { padding: 0 20px 25px; }
+
+        /* Menu */
+        #menu {
+            background: #3a2a1a; /* Madeira mais clara */
+        }
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+        .item-menu {
+            background: #4a3a2a;
+            padding: 20px;
+            border-radius: 12px;
+        }
+        .item-menu h3 { color: #d4a373; }
+
+        /* Sobre */
+        #sobre {
+            background: #2c1e0f;
+        }
+        .sobre-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+            align-items: center;
+        }
+        .sobre-content img {
+            max-width: 45%;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+        }
+        .sobre-texto { flex: 1; min-width: 300px; }
+
+        /* Galeria */
+        #galeria .galeria-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+        }
+        #galeria img {
+            width: 100%;
+            height: 250px;
             object-fit: cover;
             border-radius: 10px;
+            transition: transform 0.4s;
         }
-        #sobre {
-            background-color: #f9f9f9;
-        }
+        #galeria img:hover { transform: scale(1.08); }
+
+        /* Contato */
         #contato {
-            background-color: #8B4513;
-            color: white;
+            background: #3a2a1a;
         }
         form {
-            max-width: 500px;
-            margin: 0 auto;
+            max-width: 600px;
+            margin: 0 auto 50px;
         }
         input, textarea {
             width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            padding: 15px;
+            margin: 12px 0;
+            border: none;
+            border-radius: 8px;
+            background: #5a4a3a;
+            color: white;
         }
         button {
-            background-color: #A0522D;
-            color: white;
-            padding: 10px 20px;
+            background: #d4a373;
+            color: #2c1e0f;
             border: none;
-            border-radius: 5px;
+            padding: 15px 40px;
+            font-size: 1.2em;
+            border-radius: 50px;
             cursor: pointer;
         }
-        button:hover {
-            background-color: #8B4513;
-        }
+
         footer {
-            background-color: #333;
-            color: white;
+            background: #1a0f05;
             text-align: center;
-            padding: 10px;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
+            padding: 30px;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            #hero h1 { font-size: 3em; }
+            .sobre-content img { max-width: 100%; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Churrascaria Sabor do Brasil</h1>
-        <p>A melhor experiência em carnes nobres e rodízio autêntico!</p>
+        <nav>
+            <div class="logo">Sabor do Fogo</div>
+            <div>
+                <a href="#hero">Início</a>
+                <a href="#destaques">Destaques</a>
+                <a href="#menu">Cardápio</a>
+                <a href="#sobre">Sobre</a>
+                <a href="#galeria">Galeria</a>
+                <a href="#contato">Contato</a>
+            </div>
+        </nav>
     </header>
 
-    <nav>
-        <a href="#home">Início</a>
-        <a href="#menu">Cardápio</a>
-        <a href="#sobre">Sobre Nós</a>
-        <a href="#contato">Contato</a>
-    </nav>
+    <section id="hero">
+        <div>
+            <h1>Churrascaria Sabor do Fogo</h1>
+            <p>Rodízio de carnes nobres • Ambiente rústico • Sabor autêntico do Brasil</p>
+            <a href="#contato" class="btn">Reserve sua mesa agora</a>
+        </div>
+    </section>
 
-    <section id="home">
-        <h2>Bem-vindo à Churrascaria Sabor do Brasil</h2>
-        <p>Venha saborear as melhores carnes grelhadas, saladas frescas e acompanhamentos irresistíveis. Ambiente acolhedor e serviço impecável para atrair famílias, amigos e grupos corporativos.</p>
-        <button onclick="window.location.href='#contato'">Reserve Agora</button>
+    <section id="destaques">
+        <h2>Nossos Destaques</h2>
+        <div class="destaques-grid">
+            <div class="prato">
+                <img src="https://images.unsplash.com/photo-1544025162-d766942659fe?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Picanha">
+                <h3>Picanha na Brasa</h3>
+                <p>Corte premium suculento, grelhado na perfeição.</p>
+            </div>
+            <div class="prato">
+                <img src="https://images.unsplash.com/photo-1599921841143-819495a13ada?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Costela">
+                <h3>Costela ao Fogo Baixo</h3>
+                <p>Derrete na boca após horas de defumação lenta.</p>
+            </div>
+            <div class="prato">
+                <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Fraldinha">
+                <h3>Fraldinha Especial</h3>
+                <p>Macia e saborosa, com tempero caseiro.</p>
+            </div>
+        </div>
     </section>
 
     <section id="menu">
-        <h2>Nosso Cardápio</h2>
-        <p>Uma variedade de cortes premium em rodízio ilimitado.</p>
-        <div class="menu-item">
-            <img src="https://example.com/picanha.jpg" alt="Picanha">
-            <h3>Picanha</h3>
-            <p>A rainha das carnes, suculenta e macia.</p>
-            <p>R$ 89,90 por pessoa</p>
-        </div>
-        <div class="menu-item">
-            <img src="https://example.com/costela.jpg" alt="Costela">
-            <h3>Costela</h3>
-            <p>Assada lentamente para derreter na boca.</p>
-            <p>Incluso no rodízio</p>
-        </div>
-        <div class="menu-item">
-            <img src="https://example.com/saladas.jpg" alt="Saladas">
-            <h3>Buffet de Saladas</h3>
-            <p>Opções frescas e variadas para complementar.</p>
-            <p>Incluso no rodízio</p>
+        <h2>Cardápio Rodízio</h2>
+        <div class="menu-grid">
+            <div class="item-menu">
+                <h3>Carnes Nobres</h3>
+                <p>Picanha • Alcatra • Fraldinha • Costela • Cupim • Linguiça • Coração • Contra-filé</p>
+                <p><strong>Incluso no rodízio</strong></p>
+            </div>
+            <div class="item-menu">
+                <h3>Acompanhamentos</h3>
+                <p>Arroz • Farofa • Vinagrete • Batata frita • Polenta frita • Mandioca frita • Salada completa</p>
+                <p><strong>Buffet livre</strong></p>
+            </div>
+            <div class="item-menu">
+                <h3>Bebidas & Sobremesas</h3>
+                <p>Caipirinha • Chopp • Refrigerantes • Sobremesas da casa (Pudim, Petit gateau, etc.)</p>
+                <p>À parte ou combos</p>
+            </div>
         </div>
     </section>
 
     <section id="sobre">
         <h2>Sobre Nós</h2>
-        <p>Somos uma churrascaria profissional localizada no coração do Rio de Janeiro, com mais de 10 anos de tradição. Nosso objetivo é proporcionar uma experiência gastronômica inesquecível, com carnes de alta qualidade e um ambiente elegante que atrai turistas e locais. Venha nos visitar e sinta o verdadeiro sabor do Brasil!</p>
+        <div class="sobre-content">
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Ambiente churrascaria">
+            <div class="sobre-texto">
+                <p>Com mais de 15 anos trazendo o verdadeiro churrasco gaúcho para o Rio de Janeiro, a Sabor do Fogo é sinônimo de qualidade, tradição e sabor inconfundível.</p>
+                <p>Nossas carnes são selecionadas diariamente de fornecedores premium, grelhadas na brasa por churrasqueiros experientes. Venha viver essa experiência!</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="galeria">
+        <h2>Galeria</h2>
+        <div class="galeria-grid">
+            <img src="https://images.unsplash.com/photo-1555939594-58056f625634?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Churrasco">
+            <img src="https://images.unsplash.com/photo-1606857521015-7f9fcf423740?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mesa farta">
+            <img src="https://images.unsplash.com/photo-1544025162-d766942659fe?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Picanha">
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Interior">
+            <img src="https://images.unsplash.com/photo-1599921841143-819495a13ada?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Costela">
+        </div>
     </section>
 
     <section id="contato">
-        <h2>Entre em Contato</h2>
-        <p>Envie uma mensagem ou reserve sua mesa.</p>
+        <h2>Faça sua Reserva</h2>
         <form>
-            <input type="text" placeholder="Seu Nome" required>
-            <input type="email" placeholder="Seu Email" required>
-            <textarea placeholder="Sua Mensagem" required></textarea>
-            <button type="submit">Enviar</button>
+            <input type="text" placeholder="Nome completo" required>
+            <input type="tel" placeholder="Telefone / WhatsApp" required>
+            <input type="date" required>
+            <input type="number" placeholder="Quantidade de pessoas" min="1" required>
+            <textarea placeholder="Alguma observação?" rows="5"></textarea>
+            <button type="submit">Reservar Mesa</button>
         </form>
-        <p>Endereço: Rua Exemplo, 123 - Rio de Janeiro, RJ<br>Telefone: (21) 1234-5678<br>Email: contato@sabordobrasil.com.br</p>
+        <p style="text-align:center; font-size:1.2em;">Rua das Acácias, 456 - Barra da Tijuca, Rio de Janeiro<br>Tel/Whats: (21) 99999-8888 | contato@sabordofogo.com.br</p>
     </section>
 
     <footer>
-        <p>&copy; 2026 Churrascaria Sabor do Brasil. Todos os direitos reservados.</p>
+        <p>&copy; 2026 Churrascaria Sabor do Fogo. Todos os direitos reservados.</p>
     </footer>
 
 </body>
